@@ -1,55 +1,49 @@
-const deyv = document.querySelector(".but2");
-deyv.addEventListener("click", () => {
-  console.log("click A");
-})
+class Highlight {
+  _element;
 
+  get element() {
+    return this._element;
+  }
 
-function zamorozka(selector) {
-  console.log("zamorozka: start")
+  constructor(element) {
+    this._element = document.querySelector(element);
+  }
 
-  const element = document.querySelector(selector);
-  setActiveElement(element);
-  console.log("zamorozka: stop");
-}
+  disabledAllClicks() {
+    document.body.classList.add('disabledClick');
+  }
 
-//zamorozka('.but2');
+  enableAllClicks() {
+    document.body.classList.remove('disabledClick');
+  }
 
-function disableAllClicks() {
-  document.body.classList.add('disabledClick');
-}
+  toggleOverlayVisibility(isVisible) {
+    if (isVisible) {
+      document.querySelector('.overlay').classList.add('overlay--active');
+      this.disabledAllClicks();
+    } else {
+      document.querySelector('.overlay').classList.remove('overlay--active');
+      this.enableAllClicks()
+    }
+  }
 
-function enableAllClicks() {
-  document.body.classList.remove('disabledClick');
-}
+  setActiveElement() {
+    this.toggleOverlayVisibility(true);
+    this.element.classList.add('activeElement');
+    this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
+  }
 
-function disableSelectedElementClick(selector) {
-  const element = document.querySelector(selector);
-  element.classList.add('disabledClick');
-}
+  removeActiveElement() {
+    this.element.classList.remove('activeElement');
+  }
 
-function toggleOverlayVisibility(isVisible) {
-  if (isVisible) {
-    document.querySelector('.overlay').classList.add('overlay--active');
-    disableAllClicks();
-  } else {
-    document.querySelector('.overlay').classList.remove('overlay--active');
-    enableAllClicks();
+  handleActiveElementClick(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.removeActiveElement(event.currentTarget);
+    this.toggleOverlayVisibility(false);
   }
 }
 
-function setActiveElement(element) {
-  toggleOverlayVisibility(true);
-  element.classList.add('activeElement');
-  element.addEventListener('click', handleActiveElementClick, { capture: true, once: true });
-}
-
-function removeActiveElement(element) {
-  element.classList.remove('activeElement');
-}
-
-function handleActiveElementClick(event) {
-  event.stopPropagation();
-  event.preventDefault();
-  removeActiveElement(event.currentTarget);
-  toggleOverlayVisibility(false);
-}
+const highLight = new Highlight('.but1');
+highLight.setActiveElement();
