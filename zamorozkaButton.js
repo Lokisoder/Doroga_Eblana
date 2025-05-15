@@ -26,11 +26,17 @@ class Highlight {
       this.enableAllClicks()
     }
   }
+  //
+  // setActiveElement() {
+  //   this.toggleOverlayVisibility(true);
+  //   this.element.classList.add('activeElement');
+  //   this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
+  // }
 
-  setActiveElement() {
+  show() {
     this.toggleOverlayVisibility(true);
     this.element.classList.add('activeElement');
-    this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
+    // this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
   }
 
   removeActiveElement() {
@@ -45,5 +51,5 @@ class Highlight {
   }
 }
 
-const highLight = new Highlight('.but1');
-highLight.setActiveElement();
+// const highLight = new Highlight('.but1');
+// highLight.setActiveElement();

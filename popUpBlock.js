@@ -77,5 +77,5 @@ class ToolTip {
   }
 }
 
-const tooltip = new ToolTip('.but3', '.pop-up-block', '.but4', '.span1', 'Привет Руслан');
-tooltip.popUpBlock();
+// const tooltip = new ToolTip('.but3', '.pop-up-block', '.but4', '.span1', 'Привет Руслан');
+// tooltip.popUpBlock();
