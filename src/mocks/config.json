@@ -1,0 +1,18 @@
+[
+  {
+    "type": "highlight",
+    "target": ".but1",
+    "event": "click"
+  },
+  {
+    "type": "tooltip",
+    "target": ".but3",
+    "text": "Это дополнительная кнопка",
+    "popup": {
+      "block": ".pop-up-block",
+      "button": ".but4",
+      "span": ".span1"
+    },
+    "event": "click"
+  }
+]

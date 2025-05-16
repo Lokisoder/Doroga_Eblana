@@ -1,4 +1,4 @@
-class Highlight {
+export class Highlight {
   _element;
 
   get element() {
@@ -26,30 +26,20 @@ class Highlight {
       this.enableAllClicks()
     }
   }
-  //
-  // setActiveElement() {
-  //   this.toggleOverlayVisibility(true);
-  //   this.element.classList.add('activeElement');
-  //   this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
-  // }
 
   show() {
     this.toggleOverlayVisibility(true);
     this.element.classList.add('activeElement');
-    // this.element.addEventListener('click', this.handleActiveElementClick.bind(this), { capture: true, once: true });
   }
 
   removeActiveElement() {
     this.element.classList.remove('activeElement');
   }
 
-  handleActiveElementClick(event) {
+  click(event) {
     event.stopPropagation();
     event.preventDefault();
     this.removeActiveElement(event.currentTarget);
     this.toggleOverlayVisibility(false);
   }
 }
-
-// const highLight = new Highlight('.but1');
-// highLight.setActiveElement();

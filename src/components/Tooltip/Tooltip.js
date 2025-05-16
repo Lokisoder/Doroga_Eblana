@@ -1,9 +1,9 @@
-class ToolTip {
-  _element;
+export class Tooltip {
+  _span;
   _block;
+  _element;
   _button;
   _text;
-  _span;
 
   constructor(element, block, button, span, text) {
     this._element = document.querySelector(element);
@@ -64,18 +64,16 @@ class ToolTip {
     this.button.classList.remove('but4--active');
   }
 
-  popUpBlock() {
-    this.element.addEventListener('click',() => {
-      this.setPositionBlock(this.element, this.block);
-      this.setActiveBlock(this.block);
-      this.setActiveButton(this.button);
-      this.button.addEventListener('click', () => {
-        this.removeActiveBlock(this.block);
-        this.removeActiveButton(this.button);
-      });
-    })
+  show() {
+    this.setPositionBlock(this.element, this.block);
+    this.setActiveBlock(this.block);
+    this.setActiveButton(this.button);
+  }
+
+  click(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.removeActiveBlock(this.block);
+    this.removeActiveButton(this.button);
   }
 }
-
-// const tooltip = new ToolTip('.but3', '.pop-up-block', '.but4', '.span1', 'Привет Руслан');
-// tooltip.popUpBlock();
