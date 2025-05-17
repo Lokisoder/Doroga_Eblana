@@ -1,0 +1,77 @@
+:root {
+  --active-element-z-index: 10000;
+  --overlay-z-index: 10000;
+  --pop-up-block-z-index: 10000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: darkgrey;
+  opacity: 50%;
+  z-index: var(--overlay-z-index);
+  visibility: hidden;
+}
+
+.overlay--active {
+  visibility: visible;
+}
+
+.but2 {
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  background-color: aqua;
+  border-style: dashed;
+}
+
+.activeElement {
+  position: relative;
+  outline: 10px solid orange;
+  pointer-events: auto;
+  z-index: var(--active-element-z-index);
+}
+
+.disabledClick {
+  pointer-events: none;
+}
+
+.pop-up-block {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  padding: 10px;
+  margin: 10px;
+  outline: 3px solid black;
+  border-radius: 25%;
+  background-color: #2E9AFF;
+  user-select: none;
+  visibility: hidden;
+  text-wrap: balance;
+  z-index: var(--pop-up-block-z-index);
+}
+
+.pop-up-block--active {
+  visibility: visible;
+
+}
+
+
+.but4 {
+  position: absolute;
+  margin: 10px;
+  background-color: aqua;
+  border-radius: 50%;
+  visibility: hidden;
+  z-index: var(--active-element-z-index);
+  pointer-events: auto;
+}
+
+.but4--active {
+  visibility: visible;
+  top: 40px;
+}
