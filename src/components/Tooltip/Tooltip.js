@@ -1,16 +1,18 @@
 export class Tooltip {
-  _span;
-  _block;
   _element;
   _button;
+  _span;
+  _block;
   _text;
+  _action;
 
-  constructor(element, block, button, span, text) {
+  constructor(element, block, button, span, text, action) {
     this._element = document.querySelector(element);
     this._block = document.querySelector(block);
     this._button = document.querySelector(button);
     this._text = text;
     this.setSpan(span);
+    this._action = document.querySelector(action);
   }
 
   get element() {
@@ -31,6 +33,10 @@ export class Tooltip {
 
   set text(value) {
     this._text = value;
+  }
+
+  get action() {
+    return this._action;
   }
 
   setSpan(selector) {
@@ -56,8 +62,17 @@ export class Tooltip {
     this.block.style.top = y + height + 'px';
   }
 
+  setActiveElement() {
+    this.element.classList.add('activeElement', 'disabledClick');
+  }
+
+  removeActiveElement() {
+    this.element.classList.remove('activeElement', 'disabledClick');
+  }
+
   setActiveButton() {
     this.button.classList.add('but4--active');
+
   }
 
   removeActiveButton() {
@@ -65,15 +80,17 @@ export class Tooltip {
   }
 
   show() {
-    this.setPositionBlock(this.element, this.block);
-    this.setActiveBlock(this.block);
-    this.setActiveButton(this.button);
+    this.setPositionBlock();
+    this.setActiveBlock();
+    this.setActiveButton();
+    this.setActiveElement();
   }
 
   click(event) {
     event.stopPropagation();
     event.preventDefault();
-    this.removeActiveBlock(this.block);
-    this.removeActiveButton(this.button);
+    this.removeActiveBlock();
+    this.removeActiveButton();
+    this.removeActiveElement()
   }
 }

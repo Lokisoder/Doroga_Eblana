@@ -9,11 +9,13 @@ export class Frame {
     return this._element;
   }
 
+
   run() {
     this.element.show()
 
     return new Promise((resolve, reject) => {
-      this.element.element.addEventListener('click', (e)  => {
+
+      this.element.action.addEventListener('click', (e) => {
         this.element.click(e);
         resolve(this.element);
       }, { capture: true, once: true })

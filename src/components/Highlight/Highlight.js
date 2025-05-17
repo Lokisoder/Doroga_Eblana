@@ -1,34 +1,19 @@
 export class Highlight {
   _element;
 
-  get element() {
-    return this._element;
-  }
-
   constructor(element) {
     this._element = document.querySelector(element);
   }
 
-  disabledAllClicks() {
-    document.body.classList.add('disabledClick');
+  get element() {
+    return this._element;
   }
 
-  enableAllClicks() {
-    document.body.classList.remove('disabledClick');
+  get action() {
+    return this._element;
   }
 
-  toggleOverlayVisibility(isVisible) {
-    if (isVisible) {
-      document.querySelector('.overlay').classList.add('overlay--active');
-      this.disabledAllClicks();
-    } else {
-      document.querySelector('.overlay').classList.remove('overlay--active');
-      this.enableAllClicks()
-    }
-  }
-
-  show() {
-    this.toggleOverlayVisibility(true);
+  setActiveElement() {
     this.element.classList.add('activeElement');
   }
 
@@ -36,10 +21,13 @@ export class Highlight {
     this.element.classList.remove('activeElement');
   }
 
+  show() {
+    this.setActiveElement();
+  }
+
   click(event) {
     event.stopPropagation();
     event.preventDefault();
     this.removeActiveElement(event.currentTarget);
-    this.toggleOverlayVisibility(false);
   }
 }

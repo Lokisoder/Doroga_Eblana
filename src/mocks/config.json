@@ -8,11 +8,15 @@
     "type": "tooltip",
     "target": ".but3",
     "text": "Это дополнительная кнопка",
-    "popup": {
-      "block": ".pop-up-block",
-      "button": ".but4",
-      "span": ".span1"
-    },
+    "block": ".pop-up-block",
+    "button": ".but4",
+    "span": ".span1",
+    "event": "click",
+    "action": ".but4"
+  },
+  {
+    "type": "highlight",
+    "target": ".but3",
     "event": "click"
   }
 ]

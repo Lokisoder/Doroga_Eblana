@@ -1,6 +1,7 @@
 :root {
   --active-element-z-index: 10000;
   --overlay-z-index: 10000;
+  --pop-up-block-z-index: 10000;
 }
 
 table {
@@ -64,10 +65,12 @@ td {
   user-select: none;
   visibility: hidden;
   text-wrap: balance;
+  z-index: var(--pop-up-block-z-index);
 }
 
 .pop-up-block--active {
   visibility: visible;
+
 }
 
 
@@ -77,7 +80,10 @@ td {
   background-color: aqua;
   border-radius: 50%;
   visibility: hidden;
+  z-index: var(--active-element-z-index);
+  pointer-events: auto;
 }
+
 .but4--active {
   visibility: visible;
   top: 40px;

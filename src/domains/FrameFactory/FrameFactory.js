@@ -1,5 +1,5 @@
-import {Tooltip, Highlight} from "../../components";
-import {Frame} from "../Frame";
+import { Highlight, Tooltip } from "../../components";
+import { Frame } from "../Frame";
 
 
 export class FrameFactory {
@@ -14,15 +14,16 @@ export class FrameFactory {
       case "tooltip":
         element = new Tooltip(
           step.target,
-          step.popup.block,
-          step.popup.button,
-          step.popup.span,
-          step.text
+          step.block,
+          step.button,
+          step.span,
+          step.text,
+          step.action
         );
         break;
 
-        default:
-          throw new Error(`Unknown step type: ${step.type}`);
+      default:
+        throw new Error(`Unknown step type: ${step.type}`);
     }
     return new Frame(element);
   }
